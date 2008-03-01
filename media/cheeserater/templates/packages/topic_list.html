@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Packages by category | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <h2>Packages by category</h2>
+  <div class="arrow" id="arrow-by-category"></div>
+	<ul id="topic-list">
+    {% for t in topic_list %}
+    <li>
+      <h3><a href="{{ t.permalink }}">{{ t }}</a></h3>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

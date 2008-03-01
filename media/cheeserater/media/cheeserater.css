@@ -1,0 +1,70 @@
+a, a:link, a:visited { text-decoration: none; font-weight: bold; color: inherit; }
+a:hover { color: #fdd700; }
+body { background: #020202 url(topgrad.png) repeat-x; color: white; text-align: center; font: 13px/18px "Helvetica Neue", "Helvetica", sans-serif;}
+div.arrow { position: absolute; width: 32px; height: 27px; top: -27px; background: transparent url(arrow-top.png) no-repeat;}
+h2 { font-size: 24px; color: #6699cc; font-weight: bold; line-height: 26px; }
+h3 { font-size: 14px; color: #787878; font-weight: bold; line-height: 20px; }
+input.button { padding-bottom: 3px; margin-right: 10px; text-align: center; font-size: 12px; font-weight: bold; line-height: 20px; width: 100px; height: 25px; overflow: hidden; border: 0px none; background: white url(buttons.png); color: black; }
+input.button:hover { background-position: 0 25px; cursor: pointer; }
+input { border: 1px inset #ccc; padding: 2px; font: 13px/18px  "Helvetica Neue", "Helvetica", sans-serif; height: 22px;}
+table { color: #666; font: 13px/18px "Helvetica Neue", "Helvetica", sans-serif; width: 100%; }
+td, th { padding: 2px 10px; border: 1px #ccc solid; }
+thead th { font-weight: bold; }
+.error { color: red; }
+
+#account { font-size: 12px; margin: 0 0 3px 8px; }
+
+#arrow-by-category { left: 465px; }
+#arrow-by-name { left: 358px; }
+#arrow-by-score { left: 564px; }
+#arrow-search { left: 650px; }
+
+#details { margin-left: 380px; font-size: 13px; position: relative; }
+#details dd a { font-weight: normal; }
+#details dd { margin-bottom: 1em; }
+#details dd { padding-left: 10px; }
+#details dt { font-weight: bold; }
+#details ul.categories { font-size: 11px; }
+
+#footer { clear: both; padding-top: 20px; font-size: 11px; }
+
+#header { position: relative; }
+#header h1 a { padding-top: 65px; display: block; height: 36px; width: 283px; background: url(logo.png) no-repeat center center; text-indent: -999px; }
+#header ul li { display: inline; padding: 0 14px; font-size: 14px; }
+#header ul { position: absolute; bottom: 27px; right: 17px; }
+
+#list-content { background-color: white; color: #666; background: #fff url(big-bubble-bottom.png) no-repeat bottom; position: relative; padding-bottom: 16px; }
+#list-content div.paginator { padding: 4px 10px; clear: both; }
+#list-content h2 { background: url(big-bubble-top.png) no-repeat; padding: 16px 10px 0 10px; }
+#list-content ul, #list-content #packages-by-score { margin: 10px 10px; }
+#list-content ul.package-list li a { font-weight: normal; }
+#list-content ul.package-list li { padding: 2px 4px; overflow: hidden; }
+#list-content ul.package-list { float: left; width: 124px; margin: 0 10px; line-height: 15px; font-size: 12px; }
+#list-content #package-list { background: transparent url(cols.png) repeat -10px 0; margin: 10px 0;}
+#list-content #topic-list li { margin: 5px 0; clear: left; }
+#list-content p { margin: 10px; }
+
+form.regform { margin: 10px; }
+form.regform p { margin-bottom: 12px; }
+
+#message { float: left; width: 340px; clear:left; margin-top: 1em; }
+
+#package-content #arrow { position: absolute; width: 27px; height: 32px; top: 25px; right: -45px; background: transparent url(arrow-right.png) no-repeat; }
+#package-content #bubble div { padding: 4px 10px; }
+#package-content #bubble h2 { background: url(bubble-top.png) no-repeat; padding: 16px 10px 0 10px;}
+#package-content #bubble h3 { padding: 6px 10px; }
+#package-content #bubble { position: relative; float: left; color: #666; float: left; width: 340px; background: #fff url(bubble-bottom.png) no-repeat bottom; }
+
+#packages-by-score div { float: left; width: 340px; margin-right: 10px; }
+#packages-by-score h3 { margin: 15px 0 5px 0; }
+#packages-by-score th.score { width: 40px; }
+
+#score { color: #69c; font-size: 48px; font-weight: bold; position: absolute; right:5px; bottom:25px; letter-spacing: -0.05em;}
+
+#search input.text { width: 150px; position: relative; top: 1px; }
+#search { margin: 10px 10px; position: absolute; right: 0; top: 10px; width: 275px;}
+
+#vote { margin: 12px 0; }
+#vote form { display: inline; }
+
+#wrapper { width: 720px; text-align: left; margin: 0 auto; }

@@ -1,0 +1,23 @@
+{% if is_paginated %}
+  <div class="paginator">
+    {% if has_previous %}
+      {% if q %}
+        <a href="?q={{ q|urlencode }}&amp;page={{ previous }}">&laquo; previous</a>
+      {% else %}
+        <a href="?page={{ previous }}">&laquo; previous</a>         
+      {% endif %}
+    {% else %}
+      &laquo; previous
+    {% endif %}
+    | page {{ page }} of {{ pages}} |
+    {% if has_next %}
+      {% if q %}
+        <a href="?q={{ q|urlencode }}&amp;page={{ next }}">next &raquo;</a>
+      {% else %}
+        <a href="?page={{ next }}">next &raquo;</a>         
+      {% endif %}
+    {% else %}
+      next &raquo;
+    {% endif %}
+  </div>  
+{% endif %}

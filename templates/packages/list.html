@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if category %}
+    {{ category }} | {{ block.super }}
+  {% else %}
+    Packages by name
+  {% endif %}
+{% endblock %}
+  
+{% block content %}
+  {% block pagetitle %}
+    {% if category %}
+      <h2><a href="{{ category.topic.permalink }}">{{ category.topic }}</a> :: {{ category.value}}</h2>
+      <div class="arrow" id="arrow-by-category"></div>
+    {% else %}
+      <h2>Packages by name</h2>
+      <div class="arrow" id="arrow-by-name"></div>
+    {% endif %}    
+  {% endblock %}
+  {% block package-list %}
+    {% include "packages/paginator.html" %}
+    {% load listutil %}
+    <div id="package-list">
+      {% for pl in package_list|partition_horizontal:"5" %}
+        <ul class="package-list">
+          {% for p in pl %}
+            <li>
+      				<a href="{{ p.permalink }}">{{ p.name }}</a>
+      			</li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+	  </div>
+    <br clear="all">
+    {% include "packages/paginator.html" %}
+  {% endblock %}
+{% endblock %}

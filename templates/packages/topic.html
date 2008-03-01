@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ topic }} | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="arrow" id="arrow-by-category"></div>
+  <h2>{{ topic }}</h2>
+  <ul id="category-list">
+    {% for c in category_list %}
+    <li>
+      <a href="{{ c.permalink }}">{{ c.value }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

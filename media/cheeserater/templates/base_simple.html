@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	{% block extrahead %}{% endblock %}
+	<title>{% block title %}CheeseRater{% endblock %}</title>
+</head>
+<body>
+  {% block content-wrapper %}
+    <div id="list-content">
+      {% block content %}{% endblock %}
+    </div>
+  {% endblock %}
+</body>
+</html>
