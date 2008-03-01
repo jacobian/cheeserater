@@ -1,20 +1,21 @@
-# Django settings for templateproj project.
+#
+# Default settings for Cheeserater project.
+# The easiest way to use this is to make a settings.py file containting
+# "from settings_template import *" and then override anything you need.
+#
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+import os
+_base = os.path.dirname(__file__)
 
-ADMINS = (
-    ('Jacob Kaplan-Moss', 'jacob@jacobian.org'),
-)
+TEMPLATE_DEBUG = DEBUG = True
 
-MANAGERS = ADMINS
-
-DATABASE_ENGINE = 'postgresql_psycopg2'   
-DATABASE_NAME = 'cheeserater'     
-DATABASE_USER = 'jacob'     
-DATABASE_PASSWORD = '' 
-DATABASE_HOST = ''     
-DATABASE_PORT = ''     
+# Database connection info
+DATABASE_ENGINE = 'sqlite3'   
+DATABASE_NAME = os.path.join(_base, 'cheeserater.db')
+DATABASE_USER = ''     # Not used for sqlite
+DATABASE_PASSWORD = '' # Not used for sqlite
+DATABASE_HOST = ''     # Not used for sqlite
+DATABASE_PORT = ''     # Not used for sqlite
                        
 # Local time zone for this installation. All choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
@@ -27,6 +28,7 @@ TIME_ZONE = 'America/Chicago'
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
 LANGUAGE_CODE = 'en-us'
 
+# Site ID in the Sites table
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -64,9 +66,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'cheeserater.urls'
 
-from unipath import FSPath as Path
 TEMPLATE_DIRS = (
-    Path(__file__).parent.child("templates"),
+    os.path.join(_base, "templates"),
 )
 
 INSTALLED_APPS = (
