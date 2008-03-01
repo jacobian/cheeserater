@@ -1,5 +1,5 @@
 All media (i.e. everything in the "media" directory) is Copyright (c) 2007 Jacob
-Kaplan-Moss, all rights reserved, and may not be reused without permssion.
+Kaplan-Moss, all rights reserved, and may not be reused without permission.
 
 All remaining code and templates are licensed under the BSD License, which
 follows:
