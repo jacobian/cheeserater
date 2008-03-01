@@ -5,7 +5,7 @@ from django.db import models
 CHEESESHOP = "http://cheeseshop.python.org/pypi"
 
 class Topic(models.Model):
-    name = models.CharField(maxlength=100)
+    name = models.CharField(max_length=100)
     slug = models.SlugField(prepopulate_from=("name",))
 
     class Meta:
@@ -23,7 +23,7 @@ class Topic(models.Model):
 
 class Category(models.Model):
     topic = models.ForeignKey(Topic, related_name="categories")
-    value = models.CharField(maxlength=100)
+    value = models.CharField(max_length=100)
     slug = models.SlugField(prepopulate_from=("value",))
 
     class Meta:
@@ -40,9 +40,9 @@ class Category(models.Model):
         return "cheeserater.packages.views.category_detail", [self.topic.slug, self.slug]
 
 class Package(models.Model):
-    name        = models.CharField(maxlength=300)
-    version     = models.CharField(maxlength=300, blank=True)
-    author      = models.CharField(maxlength=300, blank=True)
+    name        = models.CharField(max_length=300)
+    version     = models.CharField(max_length=300, blank=True)
+    author      = models.CharField(max_length=300, blank=True)
     home_page   = models.URLField(blank=True)
     summary     = models.TextField()
     description = models.TextField(blank=True)

@@ -1,5 +1,6 @@
 from django.db import models, connection
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.generic import GenericForeignKey
 from django.contrib.auth.models import User
 
 class VoteManager(models.Manager):
@@ -79,7 +80,7 @@ class Vote(models.Model):
     user         = models.ForeignKey(User)
     content_type = models.ForeignKey(ContentType)
     object_pk    = models.TextField()
-    object       = models.GenericForeignKey("content_type", "object_pk")
+    object       = GenericForeignKey("content_type", "object_pk")
     vote         = models.SmallIntegerField(choices=SCORES)
 
     objects = VoteManager()
