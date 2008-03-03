@@ -1,8 +1,8 @@
+import os
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.static import serve
 from cheeserater.packages.views import homepage
-from unipath import FSPath as Path
 
 urlpatterns = patterns('',
     (r'^accounts/',       include('cheeserater.accounts.urls')),
@@ -14,5 +14,7 @@ urlpatterns = patterns('',
 
 if settings.DEBUG:
     urlpatterns += patterns('', 
-        (r'^m/(?P<path>.*)$', serve, {'document_root' : Path(__file__).parent.child("media")})
+        (r'^m/(?P<path>.*)$', serve, {
+            'document_root' : os.path.join(os.path.dirname(__file__), "media")
+        })
     )

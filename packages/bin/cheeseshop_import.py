@@ -3,17 +3,20 @@ from django.template.defaultfilters import slugify
 from cheeserater.packages.models import Package, Topic, Category
 
 CHEESESHOP = "http://cheeseshop.python.org/pypi"
-SKIP_UNTIL = "xDDMR"
 
-def main():
+def main(skip_until=None):
+    # Grab the packages from the cheeseshop, and sort by name.
     s = xmlrpclib.Server(CHEESESHOP)
-    names = s.list_packages()
-    names.sort(key=lambda s: s.lower())
+    names = sorted(s.list_packages(), key=lambda s: s.lower())
+
     for name in names:
-        if SKIP_UNTIL and name < SKIP_UNTIL:
+        # Skip if we're asked to.
+        if skip_until and name < skip_until:
             print "Skiping: %r" % name
             continue
+            
         print "Updating %r" % name
+        
         # Load info from the cheeseshop
         versions = s.package_releases(name)
     
@@ -25,10 +28,8 @@ def main():
             continue
     
         # Lookup or create the package object
-        try:
-            package = Package.objects.get(name=name)
-        except Package.DoesNotExist:
-            package = Package(name=name)
+        package, created = Package.objects.get_or_create(name=name)
+        if created:
             print "Created package %r" % name
     
         # Update package fields
@@ -63,4 +64,8 @@ def main():
         package.categories = categories
         
 if __name__ == '__main__':
-    main()
+    import optparse
+    parser = optparse.OptionParser()
+    parser.add_option("--skip-to", dest="skip_until", default=None)
+    options, args = parser.parse_args()
+    main(options.skip_until)

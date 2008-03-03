@@ -51,6 +51,8 @@ class Package(models.Model):
 
     class Meta:
         ordering = ["name"]
+        verbose_name = "cheeseshop package"
+        verbose_name_plural = "cheeseshop packages"
 
     class Admin:
         list_display = ('name', 'version', 'summary')
