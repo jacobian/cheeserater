@@ -80,5 +80,5 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'cheeserater.packages',
     'cheeserater.accounts',
-    'cheeserater.votes',
+    'voting',
 )

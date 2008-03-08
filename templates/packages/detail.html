@@ -3,25 +3,25 @@
 {% block title %}{{ package.name }} | {{ block.super }}{% endblock %}
 
 {% block content-wrapper %}
-  {% load markup %}
+  {% load saferest %}
   <div id="package-content">
     <div id="bubble">
       <div id="arrow"></div>
       <h2>{{ package.name }}</h2>
       <h3>{{ package.summary }}</h3>
       <div id="package-details">
-        {{ package.description|restructuredtext|truncatewords_html:"100" }}
+        {{ package.description|saferest|truncatewords_html:"150" }}
       </div>
 
       <div id="vote">
-        <form method="post" action="/vote/{{ ctype.id }}/{{ package.id }}/down/">
+        <form method="post" action="/vote/package/{{ package.id }}/down/">
           <input class="button" type="submit" name="Moldy" value="Moldy">
         </form>
-        <form method="post" action="/vote/{{ ctype.id }}/{{ package.id }}/up/">
+        <form method="post" action="/vote/package/{{ package.id }}/up/">
           <input class="button" type="submit" name="Fresh" value="Fresh">
         </form>
       </div>
-      <div id="score">{% if score %}{{ score|stringformat:"+i" }}{% else %}0{% endif %}</div>
+      <div id="score">{% if score.score %}{{ score.score|stringformat:"+i" }}{% else %}0{% endif %}</div>
     </div>
     {% block message %}{% endblock %}
     <div id="details">

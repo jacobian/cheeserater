@@ -2,7 +2,7 @@ import urllib
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from cheeserater.packages.models import Package, Topic, Category
-from cheeserater.votes.models import Vote
+from voting.models import Vote
 from django.views.generic import list_detail
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q

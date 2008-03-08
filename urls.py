@@ -3,12 +3,25 @@ from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.static import serve
 from cheeserater.packages.views import homepage
+from cheeserater.packages.models import Package
+from voting.views import vote_on_object
+
+vote_info = {
+
+}
 
 urlpatterns = patterns('',
     (r'^accounts/',       include('cheeserater.accounts.urls')),
     (r'^admin/',          include('django.contrib.admin.urls')),
     (r'^packages/',       include('cheeserater.packages.urls')),
-    (r'^vote/',           include('cheeserater.votes.urls')),
+    (
+        r'^vote/package/(?P<object_id>.*?)/(?P<direction>up|down)/$', 
+        vote_on_object, {
+            "model": Package,
+            "allow_xmlhttprequest": True,
+        },
+        "vote_on_package"
+    ),
     (r'^$',               homepage),
 )
 
