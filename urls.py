@@ -1,18 +1,15 @@
 import os
 from django.conf import settings
 from django.conf.urls.defaults import *
+from django.contrib import admin
 from django.views.static import serve
 from cheeserater.packages.views import homepage
 from cheeserater.packages.models import Package
 from voting.views import vote_on_object
 
-vote_info = {
-
-}
-
 urlpatterns = patterns('',
     (r'^accounts/',       include('cheeserater.accounts.urls')),
-    (r'^admin/',          include('django.contrib.admin.urls')),
+    (r'^admin/(.*)$',     admin.site.root),
     (r'^packages/',       include('cheeserater.packages.urls')),
     (
         r'^vote/package/(?P<object_id>.*?)/(?P<direction>up|down)/$', 
@@ -31,3 +28,5 @@ if settings.DEBUG:
             'document_root' : os.path.join(os.path.dirname(__file__), "media")
         })
     )
+
+admin.autodiscover()

@@ -6,13 +6,10 @@ CHEESESHOP = "http://cheeseshop.python.org/pypi"
 
 class Topic(models.Model):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(prepopulate_from=("name",))
+    slug = models.SlugField()
 
     class Meta:
         ordering = ["name"]
-
-    class Admin:
-        list_display = ('name',)
 
     def __str__(self):
         return self.name
@@ -24,13 +21,10 @@ class Topic(models.Model):
 class Category(models.Model):
     topic = models.ForeignKey(Topic, related_name="categories")
     value = models.CharField(max_length=100)
-    slug = models.SlugField(prepopulate_from=("value",))
+    slug = models.SlugField()
 
     class Meta:
         verbose_name_plural = "categories"
-
-    class Admin:
-        pass
 
     def __str__(self):
         return "%s :: %s" % (self.topic.name, self.value)
@@ -53,10 +47,6 @@ class Package(models.Model):
         ordering = ["name"]
         verbose_name = "cheeseshop package"
         verbose_name_plural = "cheeseshop packages"
-
-    class Admin:
-        list_display = ('name', 'version', 'summary')
-        search_fields = ('name', 'summary', 'keywords')
 
     def __str__(self):
         return self.name
