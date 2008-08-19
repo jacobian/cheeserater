@@ -5,10 +5,10 @@ Cheeserater
 
 The is the source code to cheeserater.com, a demo site used in my Django
 tutorials. You can read `the tutorial online`__, and the latest
-source can always be found `in a Mercurial repository`__
+source can always be found `in a GitHub repository`__
 
-__ http://toys.jacobian.org/presentations/2008/pycon/tutorial/
-__ http://toys.jacobian.org/hg/cheeserater.
+__ http://toys.jacobian.org/presentations/2008/oscon/tutorial/
+__ http://github.com/jacobian/cheeserater/tree..
 
 The code is released under a BSD license which basically means you can do
 whatever you want with it. The media, however, is *NOT* open source, and may not
@@ -37,5 +37,4 @@ Then you'll want to create a settings.py file in this directory containing::
 Bugs/additions
 --------------
 
-Please feel free to send patches or links to your repositories to
-<jacob@jacobian.org>
+Please feel free to send pull requests, or patches to <jacob@jacobian.org>
