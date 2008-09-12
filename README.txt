@@ -8,7 +8,7 @@ tutorials. You can read `the tutorial online`__, and the latest
 source can always be found `in a GitHub repository`__
 
 __ http://toys.jacobian.org/presentations/2008/oscon/tutorial/
-__ http://github.com/jacobian/cheeserater/tree..
+__ http://github.com/jacobian/cheeserater/tree
 
 The code is released under a BSD license which basically means you can do
 whatever you want with it. The media, however, is *NOT* open source, and may not

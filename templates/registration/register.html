@@ -8,8 +8,8 @@
   <h2>Create an account</h2>
   
   <form class="regform" action="." method="post" accept-charset="utf-8">
-    {% if form.has_errors %}
-      <h3 class="error">Please correct the error{{ form.error_dict|pluralize }} below.</h3>
+    {% if form.errors %}
+      <h3 class="error">Please correct the error{{ form.errors|pluralize }} below.</h3>
     {% endif %}
     
     <h3><label for="id_username">Username:</label></h3>

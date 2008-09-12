@@ -1,26 +1,28 @@
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django import oldforms
-from django.core.validators import ValidationError
+from django import forms
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 class UserCreationFormWithEmail(UserCreationForm):
-    def __init__(self):
-        UserCreationForm.__init__(self)
-        self.fields += (oldforms.EmailField(field_name="email", validator_list=[self.isUniqueEmail]),)
+    email = forms.EmailField()
     
-    def isUniqueEmail(self, field_data, all_data):
+    def clean_email(self):
+        email = self.cleaned_data['email']
         try:
-            u = User.objects.get(email=field_data)
+            u = User.objects.get(email=email)
         except User.DoesNotExist:
             pass
         else:
-            raise ValidationError("This email already has an account.")
+            raise forms.ValidationError("This email already has an account.")
         
-    def save(self, data):
-        return User.objects.create_user(data['username'], data['email'], data['password1'])
+    def save(self, commit=True):
+        user = super(UserCreationFormWithEmail, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
 
 def register(request):
     ctx = RequestContext(request, {}) # Just to make later code shorter...
@@ -30,18 +32,15 @@ def register(request):
         return render_to_response("registration/account_already_exists.html", {}, ctx)
         
     # Handle the form
-    manipulator = UserCreationFormWithEmail()
     if request.method == "POST":
-        data = request.POST.copy()
-        errors = manipulator.get_validation_errors(data)
-        if not errors:
+        form = UserCreationFormWithEmail(request.POST)
+        if form.is_valid():
             # Create, authenticate, and log in the new user.
-            u = manipulator.save(data)
-            u = auth.authenticate(username=u.username, password=data["password1"])
-            auth.login(request, u)
+            user = form.save()
+            user = auth.authenticate(username=user.username, password=request.POST["password1"])
+            auth.login(request, user)
             return render_to_response("registration/account_created.html", {}, ctx)
     else:
-        data, errors = {}, {}
+        form = UserCreationFormWithEmail()
     
-    form = oldforms.FormWrapper(manipulator, data, errors)
     return render_to_response("registration/register.html", {"form" : form}, ctx)
